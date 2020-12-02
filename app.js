@@ -28,6 +28,12 @@ inquirer.prompt(managerQs).then((response) => {
 
     console.log("On to employees...");
 
+    //add employees function. 
+    // addEmployees();
+
+    // last question is to add more or not.
+    // if not, No more prompt and form your HTML in output.
+
     inquirer.prompt(employeeQs).then((response) => {
         if(response.employeeRole === 'Intern'){
             const school = askIntern();
@@ -64,6 +70,39 @@ function askIntern() {
 function askEngineer() {
     inquirer.prompt("What is your GitHub username?").then((github) => {
         return github; 
+    })
+}
+
+function addEmployees() {
+    inquirer.prompt(employeeQs).then((response) => {
+        if(response.employeeRole === 'Intern'){
+            const school = askIntern();
+
+            const intern = new Intern(
+                response.employeeName,
+                response.employeeID,
+                response.employeeEmail,
+                school
+            )
+            
+            employees.push(intern);
+
+        }else if(response.employeeRole === 'Engineer'){
+            const gitHub = askEngineer();
+
+            const engineer = new Engineer(
+                response.employeeName,
+                response.employeeID,
+                response.employeeEmail,
+                gitHub
+            )
+        }
+
+        if(response.moreEmployees === 'Yes'){
+            addEmployees();
+        }else{
+            fs.writeFile("team.html", render(employees), (err) => console.log(err));
+        }
     })
 }
 

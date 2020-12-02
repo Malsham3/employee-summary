@@ -16,7 +16,13 @@ const employeeQs = [
     {
         name: "employeeEmail",
         message: "What is the employee's E-mail?"
-    }
+    },
+    {
+        type: "list",
+        name: "moreEmployees",
+        message: "Would you like to add more employees?",
+        choices: ["Yes", "No"]
+     }
 ]
 
 module.exports = employeeQs;
