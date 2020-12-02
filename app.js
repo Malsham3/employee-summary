@@ -13,6 +13,19 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 const questions = require("./questions");
+inquirer.prompt(questions).then((response) => {
+    console.log(response);
+
+    if(response.role === 'Manager'){
+        const officeNumber = prompt("What is your office number");
+    }else if(response.role === 'Engineer'){
+        const gitHub = prompt("What is your GitHub username?")
+    }else{
+        const school = prompt("What school are you attending?")
+    }
+    console.log(officeNumber);
+    
+});
 
 // and to create objects for each team member (using the correct classes as blueprints!)
 

@@ -4,16 +4,18 @@
 const questions = [
     {
         name: 'role',
-        message: 'What is your role in the company?'
+        message: 'What is your role in the company?',
+        type: 'list',
+        choices: ['Manager', 'Engineer', 'Intern']
     },
     {
         name: 'id',
         message: 'What is your ID number?',
-        type: 'list',
-        choices: ['Manager', 'Engineer', 'Intern']
     },
     {
         name: 'email',
         message: 'What is your E-mail?',
     }
 ]
+
+module.exports = questions;
