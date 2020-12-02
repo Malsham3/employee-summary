@@ -17,6 +17,7 @@ const employeeQs = [
         name: "employeeEmail",
         message: "What is the employee's E-mail?"
     },
+    //following question needs to be taken out...
     {
         type: "list",
         name: "moreEmployees",

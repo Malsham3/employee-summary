@@ -15,7 +15,9 @@ let employees = [];
 // Write code to use inquirer to gather information about the development team members,
 const managerQs = require("./questions/managerQs");
 const employeeQs = require("./questions/employeeQs")
+const internQ = require("./questions/internQ")
 
+                    /// REFER TO LINE 94
 inquirer.prompt(managerQs).then((response) => {
     const manager = new Manager(
         response.managerName,
@@ -29,54 +31,46 @@ inquirer.prompt(managerQs).then((response) => {
     console.log("On to employees...");
 
     //add employees function. 
-    // addEmployees();
+    addEmployees();
 
     // last question is to add more or not.
     // if not, No more prompt and form your HTML in output.
 
-    inquirer.prompt(employeeQs).then((response) => {
-        if(response.employeeRole === 'Intern'){
-            const school = askIntern();
+    // inquirer.prompt(employeeQs).then((response) => {
+    //     if(response.employeeRole === 'Intern'){
+    //         const school = askIntern();
 
-            const intern = new Intern(
-                response.employeeName,
-                response.employeeID,
-                response.employeeEmail,
-                school
-            )
+    //         const intern = new Intern(
+    //             response.employeeName,
+    //             response.employeeID,
+    //             response.employeeEmail,
+    //             school
+    //         )
             
-            employees.push(intern);
+    //         employees.push(intern);
 
-        }else if(response.employeeRole === 'Engineer'){
-            const gitHub = askEngineer();
+    //     }else if(response.employeeRole === 'Engineer'){
+    //         const gitHub = askEngineer();
 
-            const engineer = new Engineer(
-                response.employeeName,
-                response.employeeID,
-                response.employeeEmail,
-                gitHub
-            )
-        }
-    })
+    //         const engineer = new Engineer(
+    //             response.employeeName,
+    //             response.employeeID,
+    //             response.employeeEmail,
+    //             gitHub
+    //         )
+    //     }
+    // })
 
 });
-
-function askIntern() {
-    inquirer.prompt("What school are you attending?").then((school) => {
-        return school; 
-    })
-}
-
-function askEngineer() {
-    inquirer.prompt("What is your GitHub username?").then((github) => {
-        return github; 
-    })
-}
 
 function addEmployees() {
     inquirer.prompt(employeeQs).then((response) => {
         if(response.employeeRole === 'Intern'){
-            const school = askIntern();
+
+            let school = "";
+            inquirer.prompt({name: "schoolName", message: "What school are you attending?"}).then((input) =>{
+                school = input.schoolName;
+            })
 
             const intern = new Intern(
                 response.employeeName,
@@ -88,7 +82,6 @@ function addEmployees() {
             employees.push(intern);
 
         }else if(response.employeeRole === 'Engineer'){
-            const gitHub = askEngineer();
 
             const engineer = new Engineer(
                 response.employeeName,
@@ -98,6 +91,7 @@ function addEmployees() {
             )
         }
 
+        // the issue is app goes straight to following if statement, and THEN the school name inquirer. FIX IT. :)
         if(response.moreEmployees === 'Yes'){
             addEmployees();
         }else{
