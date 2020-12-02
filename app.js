@@ -14,6 +14,7 @@ let employees = [];
 
 // Write code to use inquirer to gather information about the development team members,
 const managerQs = require("./questions/managerQs");
+const employeeQs = require("./questions/employeeQs")
 
 inquirer.prompt(managerQs).then((response) => {
     const manager = new Manager(
@@ -25,9 +26,46 @@ inquirer.prompt(managerQs).then((response) => {
     
     employees.push(manager);
 
-    console.log(employees);
+    console.log("On to employees...");
+
+    inquirer.prompt(employeeQs).then((response) => {
+        if(response.employeeRole === 'Intern'){
+            const school = askIntern();
+
+            const intern = new Intern(
+                response.employeeName,
+                response.employeeID,
+                response.employeeEmail,
+                school
+            )
+            
+            employees.push(intern);
+
+        }else if(response.employeeRole === 'Engineer'){
+            const gitHub = askEngineer();
+
+            const engineer = new Engineer(
+                response.employeeName,
+                response.employeeID,
+                response.employeeEmail,
+                gitHub
+            )
+        }
+    })
 
 });
+
+function askIntern() {
+    inquirer.prompt("What school are you attending?").then((school) => {
+        return school; 
+    })
+}
+
+function askEngineer() {
+    inquirer.prompt("What is your GitHub username?").then((github) => {
+        return github; 
+    })
+}
 
 // and to create objects for each team member (using the correct classes as blueprints!)
 

@@ -1,5 +1,11 @@
 const employeeQs = [
     {
+        type: "list",
+        name: "employeeRole",
+        message: "What is the employee's role?",
+        choices: ["Engineer", "Intern"]
+     },
+    {
         name: "employeeName",
         message: "What is the employee's name?"
     },
@@ -12,3 +18,5 @@ const employeeQs = [
         message: "What is the employee's E-mail?"
     }
 ]
+
+module.exports = employeeQs;
