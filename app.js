@@ -10,21 +10,23 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+let employees = [];
 
 // Write code to use inquirer to gather information about the development team members,
-const questions = require("./questions");
-inquirer.prompt(questions).then((response) => {
-    console.log(response);
+const managerQs = require("./questions/managerQs");
 
-    if(response.role === 'Manager'){
-        const officeNumber = prompt("What is your office number");
-    }else if(response.role === 'Engineer'){
-        const gitHub = prompt("What is your GitHub username?")
-    }else{
-        const school = prompt("What school are you attending?")
-    }
-    console.log(officeNumber);
+inquirer.prompt(managerQs).then((response) => {
+    const manager = new Manager(
+        response.managerName,
+        response.managerID,
+        response.managerEmail,
+        response.managerOffice
+        )
     
+    employees.push(manager);
+
+    console.log(employees);
+
 });
 
 // and to create objects for each team member (using the correct classes as blueprints!)
