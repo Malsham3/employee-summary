@@ -1,3 +1,6 @@
+//Following questions will be used to get Employee's information (excluding the Manager).
+//Includes conditional questions depending on role (Engineer or Inern).
+//Final question prompts user if they wish to add more employees.
 const employeeQs = [
     {
         type: "list",
@@ -35,4 +38,5 @@ const employeeQs = [
      }
 ]
 
+//Export the Employee questions object array, to be used in the app.js file.
 module.exports = employeeQs;

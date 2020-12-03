@@ -1,6 +1,4 @@
-//array of questions for user
-
-// prompt the user for their email, id, and specific information based on their role with the company. For instance, an intern may provide their school, whereas an engineer may provide their GitHub username.
+//Following questions will be used to get Manager's information
 const managerQs = [
     {
         name: "managerName",
@@ -20,4 +18,5 @@ const managerQs = [
     }
 ]
 
+//Export the Manager questions object array, to be used in the app.js file.
 module.exports = managerQs;
