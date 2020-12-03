@@ -85,7 +85,6 @@ function addEmployees() {
 
         //otherwise finalize the task by generating the team's HTML page properly using the path, page render, modified employees array.
         }else{
-            console.log(employees);
             fs.writeFile(outputPath, render(employees), (err) => console.log(err));
         }
     })
