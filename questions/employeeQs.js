@@ -19,12 +19,12 @@ const employeeQs = [
     },
     {
         name: "github",
-        message: "What is your GitHub username?",
+        message: "What is the Engineer's GitHub username?",
         when: (answers) => answers.employeeRole === 'Engineer'
     },
     {
-        name: "schoolName",
-        message: "What school are you attending?",
+        name: "school",
+        message: "What school is the Intern currently attending?",
         when: (answers) => answers.employeeRole === 'Intern'
     },
     {

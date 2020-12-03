@@ -27,39 +27,10 @@ inquirer.prompt(managerQs).then((response) => {
     
     employees.push(manager);
 
-    console.log("On to employees...");
+    console.log("On To Employees...");
 
     //add employees function. 
     addEmployees();
-
-    // last question is to add more or not.
-    // if not, No more prompt and form your HTML in output.
-
-    // inquirer.prompt(employeeQs).then((response) => {
-    //     if(response.employeeRole === 'Intern'){
-    //         const school = askIntern();
-
-    //         const intern = new Intern(
-    //             response.employeeName,
-    //             response.employeeID,
-    //             response.employeeEmail,
-    //             school
-    //         )
-            
-    //         employees.push(intern);
-
-    //     }else if(response.employeeRole === 'Engineer'){
-    //         const gitHub = askEngineer();
-
-    //         const engineer = new Engineer(
-    //             response.employeeName,
-    //             response.employeeID,
-    //             response.employeeEmail,
-    //             gitHub
-    //         )
-    //     }
-    // })
-
 });
 
 function addEmployees() {
@@ -70,7 +41,7 @@ function addEmployees() {
                 response.employeeName,
                 response.employeeID,
                 response.employeeEmail,
-                school
+                response.school
             )
             
             employees.push(intern);
@@ -81,15 +52,18 @@ function addEmployees() {
                 response.employeeName,
                 response.employeeID,
                 response.employeeEmail,
-                github
+                response.github
             )
+
+            employees.push(engineer);
         }
 
         // the issue is app goes straight to following if statement, and THEN the school name inquirer. FIX IT. :)
         if(response.moreEmployees === 'Yes'){
             addEmployees();
         }else{
-            fs.writeFile("team.html", render(employees), (err) => console.log(err));
+            console.log(employees);
+            fs.writeFile(outputPath, render(employees), (err) => console.log(err));
         }
     })
 }
