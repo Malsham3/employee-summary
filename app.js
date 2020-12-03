@@ -15,7 +15,6 @@ let employees = [];
 // Write code to use inquirer to gather information about the development team members,
 const managerQs = require("./questions/managerQs");
 const employeeQs = require("./questions/employeeQs")
-const internQ = require("./questions/internQ")
 
                     /// REFER TO LINE 94
 inquirer.prompt(managerQs).then((response) => {
@@ -67,11 +66,6 @@ function addEmployees() {
     inquirer.prompt(employeeQs).then((response) => {
         if(response.employeeRole === 'Intern'){
 
-            let school = "";
-            inquirer.prompt({name: "schoolName", message: "What school are you attending?"}).then((input) =>{
-                school = input.schoolName;
-            })
-
             const intern = new Intern(
                 response.employeeName,
                 response.employeeID,
@@ -87,7 +81,7 @@ function addEmployees() {
                 response.employeeName,
                 response.employeeID,
                 response.employeeEmail,
-                gitHub
+                github
             )
         }
 

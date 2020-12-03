@@ -17,7 +17,16 @@ const employeeQs = [
         name: "employeeEmail",
         message: "What is the employee's E-mail?"
     },
-    //following question needs to be taken out...
+    {
+        name: "github",
+        message: "What is your GitHub username?",
+        when: (answers) => answers.employeeRole === 'Engineer'
+    },
+    {
+        name: "schoolName",
+        message: "What school are you attending?",
+        when: (answers) => answers.employeeRole === 'Intern'
+    },
     {
         type: "list",
         name: "moreEmployees",
