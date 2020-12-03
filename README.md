@@ -1,11 +1,11 @@
-# employee-summary
+# Employee-summary
 
 ## Project Demo
 ![employee-summary](https://user-images.githubusercontent.com/73148818/100958439-8f338d00-34d9-11eb-9182-2a1b661c5bd1.gif)
 
 As seen on the demo, after answering all the questions in regards to employees, an HTML page is dynamically and professionaly created and is viewable on a browser page.  
 
-## Description
+## Project description
 The goal of this project is to build a Node CLI that takes in information about employees and generates an HTML webpage that displays summaries for each employee. This webpage helps managers display and quickly access their employee's information 
 
 The summaries for all employees include:
